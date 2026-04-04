@@ -1,0 +1,59 @@
+<resources>
+    <string name="app_name">Unique Fragrance BD</string>
+    <string name="add_to_cart">Add to Cart</string>
+    <string name="description_label">Description</string>
+    <string name="total_label">Total: </string>
+    <string name="checkout">Checkout</string>
+    <string name="cart">Cart</string>
+    <string name="product_detail">Product Detail</string>
+    <string name="products">Products</string>
+    <string name="price_format">$%1$.2f</string>
+    <string name="added_to_cart">%1$s added to cart</string>
+    <string name="product_not_found">Product not found</string>
+    <string name="unknown_error">Unknown error</string>
+    <string name="checkout_not_implemented">Checkout not implemented yet</string>
+    <string name="order_id_format">Order #%1$s</string>
+    <string name="order_date_format">Ordered on: %1$s</string>
+    <string name="qty_format">Qty: %1$d</string>
+    <string name="profile">Profile</string>
+    <string name="orders">Orders</string>
+    <string name="logout">Logout</string>
+    <string name="welcome_back">Welcome Back</string>
+    <string name="login">Login</string>
+    <string name="signup">Sign Up</string>
+    <string name="create_account">Create Account</string>
+    <string name="no_account">Don\'t have an account? Sign up</string>
+    <string name="have_account">Already have an account? Login</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="full_name">Full Name</string>
+    <string name="error_fill_all">Please fill all fields</string>
+    <string name="login_success">Login Successful</string>
+    <string name="signup_success">Account created successfully</string>
+    <string name="user_not_logged_in">User not logged in</string>
+
+    <string name="shipping_address">Shipping Address</string>
+    <string name="full_address">Full Address</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="order_summary">Order Summary</string>
+    <string name="subtotal">Subtotal</string>
+    <string name="shipping">Shipping</string>
+    <string name="place_order">Confirm and Place Order</string>
+    <string name="shipping_fee_value">$10.00</string>
+    <string name="order_placed_success">Order placed successfully!</string>
+    <string name="error_invalid_input">Please enter valid shipping details</string>
+    <string name="wishlist">Wishlist</string>
+    <string name="added_to_wishlist">Added to Wishlist</string>
+    <string name="removed_from_wishlist">Removed from Wishlist</string>
+
+    <!-- Modern UI Strings -->
+    <string name="discover">Discover</string>
+    <string name="discover_subtitle">Find your signature scent</string>
+    <string name="my_cart">My Cart</string>
+    <string name="order_history">Order History</string>
+    <string name="my_profile">My Profile</string>
+    <string name="summary">Summary</string>
+    <string name="empty_cart">Your cart is empty</string>
+    <string name="empty_wishlist">Your wishlist is empty</string>
+    <string name="empty_orders">No orders yet</string>
+</resources>

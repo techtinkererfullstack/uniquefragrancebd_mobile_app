@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Luxurious Green Palette -->
+    <color name="primary_lux">#081C15</color>
+    <color name="primary_light_lux">#1B4332</color>
+    <color name="primary_dark_lux">#000000</color>
+
+    <color name="accent_gold">#D4AF37</color>
+    <color name="accent_gold_light">#F9E79F</color>
+
+    <color name="background_cream">#FDFDFD</color>
+    <color name="surface_white">#FFFFFF</color>
+
+    <color name="text_main">#1B1B1B</color>
+    <color name="text_secondary">#757575</color>
+
+    <color name="error_red">#B00020</color>
+
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+</resources>
