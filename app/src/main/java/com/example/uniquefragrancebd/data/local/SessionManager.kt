@@ -17,17 +17,30 @@ class SessionManager @Inject constructor(@ApplicationContext context: Context) {
 
     fun getAuthToken(): String? = prefs.getString("auth_token", null)
 
-    fun saveUser(userId: String, email: String, name: String) {
+    fun saveUser(
+        userId: String,
+        email: String,
+        firstName: String,
+        lastName: String,
+        phone: String?,
+        address: String?
+    ) {
         prefs.edit {
             putString("user_id", userId)
             putString("user_email", email)
-            putString("user_name", name)
+            putString("first_name", firstName)
+            putString("last_name", lastName)
+            putString("phone", phone)
+            putString("address", address)
         }
     }
 
     fun getUserId(): String? = prefs.getString("user_id", null)
     fun getUserEmail(): String? = prefs.getString("user_email", null)
-    fun getUserName(): String? = prefs.getString("user_name", null)
+    fun getFirstName(): String? = prefs.getString("first_name", null)
+    fun getLastName(): String? = prefs.getString("last_name", null)
+    fun getPhone(): String? = prefs.getString("phone", null)
+    fun getAddress(): String? = prefs.getString("address", null)
 
     fun clearSession() {
         prefs.edit { clear() }

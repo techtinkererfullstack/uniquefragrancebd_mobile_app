@@ -48,7 +48,7 @@ class WishlistFragment : Fragment() {
         adapter = ProductAdapter(
             onProductClick = { product ->
                 val bundle = Bundle().apply {
-                    putInt("productId", product.id)
+                    putString("productId", product.id)
                 }
                 findNavController().navigate(
                     R.id.productDetailFragment,

@@ -16,7 +16,7 @@ interface CartDao {
     suspend fun removeFromCart(cartEntity: CartEntity)
 
     @Query("UPDATE cart_items SET quantity = :quantity WHERE productId = :productId")
-    suspend fun updateQuantity(productId: Int, quantity: Int)
+    suspend fun updateQuantity(productId: String, quantity: Int)
 
     @Query("DELETE FROM cart_items")
     suspend fun clearCart()

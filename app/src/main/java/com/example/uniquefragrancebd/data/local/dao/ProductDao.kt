@@ -19,7 +19,7 @@ interface ProductDao {
     fun searchProducts(query: String): Flow<List<ProductEntity>>
 
     @Query("SELECT * FROM products WHERE id = :id")
-    suspend fun getProductById(id: Int): ProductEntity?
+    suspend fun getProductById(id: String): ProductEntity?
 
     @Query("SELECT DISTINCT category FROM products")
     fun getAllCategories(): Flow<List<String>>

@@ -11,6 +11,10 @@ class AuthInterceptor @Inject constructor(
     override fun intercept(chain: Interceptor.Chain): Response {
         val request = chain.request().newBuilder()
         
+        // Add Supabase API Key
+        // Replace "YOUR_SUPABASE_ANON_KEY" with your actual key from Supabase dashboard
+        request.addHeader("apikey", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InF4bGNlY21wcG13eHdieGl2ZGZ4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ3NTY3MTUsImV4cCI6MjA5MDMzMjcxNX0.0_qlXUreJF4DM8KDH3qdL4F6ZV6Zh_PMJs_m1RGsL8Q")
+        
         sessionManager.getAuthToken()?.let { token ->
             request.addHeader("Authorization", "Bearer $token")
         }

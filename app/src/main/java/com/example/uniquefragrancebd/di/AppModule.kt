@@ -51,7 +51,7 @@ object AppModule {
     @Singleton
     fun provideApiService(okHttpClient: OkHttpClient): ApiService {
         return Retrofit.Builder()
-            .baseUrl("https://api.uniquefragrancebd.com/")
+            .baseUrl("https://qxlcecmppmwxwbxivdfx.supabase.co/rest/v1/")
             .client(okHttpClient)
             .addConverterFactory(GsonConverterFactory.create())
             .build()

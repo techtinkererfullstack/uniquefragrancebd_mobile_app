@@ -87,7 +87,7 @@ class ProductListFragment : Fragment() {
         adapter = ProductAdapter(
             onProductClick = { product ->
                 val bundle = Bundle().apply {
-                    putInt("productId", product.id)
+                    putString("productId", product.id)
                 }
                 findNavController().navigate(
                     R.id.action_productListFragment_to_productDetailFragment,

@@ -43,12 +43,19 @@ class AuthViewModel @Inject constructor(
         }.launchIn(viewModelScope)
     }
 
-    fun signup(name: String, email: String, password: String) {
-        if (name.isBlank() || email.isBlank() || password.isBlank()) {
-            _state.update { it.copy(error = "Please fill all fields") }
+    fun signup(
+        firstName: String,
+        lastName: String,
+        email: String,
+        password: String,
+        phone: String?,
+        address: String?
+    ) {
+        if (firstName.isBlank() || lastName.isBlank() || email.isBlank() || password.isBlank()) {
+            _state.update { it.copy(error = "Please fill all required fields") }
             return
         }
-        repository.signup(name, email, password).onEach { result ->
+        repository.signup(firstName, lastName, email, password, phone, address).onEach { result ->
             when (result) {
                 is Resource.Success -> {
                     _state.update { it.copy(user = result.data, isLoading = false, isSuccess = true) }

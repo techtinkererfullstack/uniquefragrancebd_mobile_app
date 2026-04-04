@@ -7,5 +7,5 @@ interface WishlistRepository {
     fun getWishlistItems(): Flow<List<Product>>
     suspend fun addToWishlist(product: Product)
     suspend fun removeFromWishlist(product: Product)
-    fun isInWishlist(productId: Int): Flow<Boolean>
+    fun isInWishlist(productId: String): Flow<Boolean>
 }

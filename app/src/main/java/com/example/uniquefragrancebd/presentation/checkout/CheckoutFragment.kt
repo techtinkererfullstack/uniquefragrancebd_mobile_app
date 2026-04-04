@@ -53,6 +53,13 @@ class CheckoutFragment : Fragment() {
                         checkoutProgressBar.visibility = if (state.isLoading) View.VISIBLE else View.GONE
                         tvSubtotal.text = getString(R.string.price_format, state.subtotal)
                         tvOrderTotal.text = getString(R.string.price_format, state.total)
+                        tvShippingFee.text = getString(R.string.price_format, state.shippingFee)
+                        
+                        // Prefill user details if available
+                        state.user?.let { user ->
+                            if (etPhone.text.isNullOrBlank()) etPhone.setText(user.phone)
+                            if (etAddress.text.isNullOrBlank()) etAddress.setText(user.address)
+                        }
                     }
 
                     if (state.orderPlaced) {

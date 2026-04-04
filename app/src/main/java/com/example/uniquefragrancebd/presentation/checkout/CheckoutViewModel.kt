@@ -2,6 +2,8 @@ package com.example.uniquefragrancebd.presentation.checkout
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.uniquefragrancebd.domain.model.User
+import com.example.uniquefragrancebd.domain.repository.AuthRepository
 import com.example.uniquefragrancebd.domain.usecase.GetCartItemsUseCase
 import com.example.uniquefragrancebd.domain.usecase.PlaceOrderUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -17,7 +19,8 @@ import javax.inject.Inject
 @HiltViewModel
 class CheckoutViewModel @Inject constructor(
     private val getCartItemsUseCase: GetCartItemsUseCase,
-    private val placeOrderUseCase: PlaceOrderUseCase
+    private val placeOrderUseCase: PlaceOrderUseCase,
+    private val authRepository: AuthRepository
 ) : ViewModel() {
 
     private val _state = MutableStateFlow(CheckoutState())
@@ -25,6 +28,7 @@ class CheckoutViewModel @Inject constructor(
 
     init {
         observeCartItems()
+        loadUserDetails()
     }
 
     private fun observeCartItems() {
@@ -38,6 +42,12 @@ class CheckoutViewModel @Inject constructor(
                 ) 
             }
         }.launchIn(viewModelScope)
+    }
+
+    private fun loadUserDetails() {
+        authRepository.getCurrentUser()?.let { user ->
+            _state.update { it.copy(user = user) }
+        }
     }
 
     fun onPlaceOrder(address: String, phone: String) {
