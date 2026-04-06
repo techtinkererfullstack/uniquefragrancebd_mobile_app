@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
@@ -23,6 +24,18 @@ class LoginFragment : Fragment() {
     private val binding get() = _binding!!
 
     private val viewModel: AuthViewModel by viewModels()
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        
+        // Custom back button handling
+        requireActivity().onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                // Navigate to ProductListFragment instead of going back in history
+                findNavController().navigate(R.id.action_loginFragment_to_productListFragment)
+            }
+        })
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -57,7 +70,8 @@ class LoginFragment : Fragment() {
                     
                     if (state.isSuccess) {
                         Toast.makeText(context, "Login Successful", Toast.LENGTH_SHORT).show()
-                        findNavController().popBackStack() // Go back to where we came from
+                        // Use the action that clears the stack
+                        findNavController().navigate(R.id.action_loginFragment_to_productListFragment)
                     }
 
                     state.error?.let { error ->

@@ -5,12 +5,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
+import com.example.uniquefragrancebd.R
 import com.example.uniquefragrancebd.databinding.FragmentSignupBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -22,6 +24,18 @@ class SignupFragment : Fragment() {
     private val binding get() = _binding!!
 
     private val viewModel: AuthViewModel by viewModels()
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        
+        // Custom back button handling
+        requireActivity().onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                // Navigate to ProductListFragment instead of going back to Login
+                findNavController().navigate(R.id.action_signupFragment_to_productListFragment)
+            }
+        })
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -68,7 +82,8 @@ class SignupFragment : Fragment() {
                     
                     if (state.isSuccess) {
                         Toast.makeText(context, "Account created successfully", Toast.LENGTH_SHORT).show()
-                        findNavController().popBackStack()
+                        // Use the action that clears the stack and goes to Products
+                        findNavController().navigate(R.id.action_signupFragment_to_productListFragment)
                     }
 
                     state.error?.let { error ->

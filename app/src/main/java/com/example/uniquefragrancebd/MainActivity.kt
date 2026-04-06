@@ -57,7 +57,9 @@ class MainActivity : AppCompatActivity() {
                 R.id.wishlistFragment,
                 R.id.cartFragment,
                 R.id.orderListFragment,
-                R.id.profileFragment
+                R.id.profileFragment,
+                R.id.loginFragment,
+                R.id.signupFragment
             )
         )
 
@@ -69,8 +71,6 @@ class MainActivity : AppCompatActivity() {
         navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
                 R.id.splashFragment,
-                R.id.loginFragment,
-                R.id.signupFragment,
                 R.id.productDetailFragment,
                 R.id.checkoutFragment -> {
                     binding.bottomNav.visibility = View.GONE
