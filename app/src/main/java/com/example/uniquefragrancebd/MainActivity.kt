@@ -2,8 +2,12 @@ package com.example.uniquefragrancebd
 
 import android.os.Bundle
 import android.view.View
+import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.updatePadding
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
@@ -14,6 +18,7 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.uniquefragrancebd.databinding.ActivityMainBinding
 import com.example.uniquefragrancebd.presentation.cart.CartViewModel
+import com.google.android.material.color.DynamicColors
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -25,9 +30,22 @@ class MainActivity : AppCompatActivity() {
     private val cartViewModel: CartViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        // Apply Material 3 dynamic colors if available (Android 12+)
+        DynamicColors.applyToActivityIfAvailable(this)
+
+        // Enable edge-to-edge before calling super
+        enableEdgeToEdge()
+
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        // Handle system bar insets for edge-to-edge
+        ViewCompat.setOnApplyWindowInsetsListener(binding.main) { view, windowInsets ->
+            val insets = windowInsets.getInsets(WindowInsetsCompat.Type.systemBars())
+            view.updatePadding(left = insets.left, right = insets.right)
+            windowInsets
+        }
 
         val navHostFragment = supportFragmentManager
             .findFragmentById(R.id.nav_host_fragment) as NavHostFragment
@@ -42,7 +60,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.profileFragment
             )
         )
-        
+
         setSupportActionBar(binding.toolbar)
         setupActionBarWithNavController(navController, appBarConfiguration)
         binding.bottomNav.setupWithNavController(navController)
@@ -64,7 +82,7 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
-        
+
         observeCartBadge()
     }
 

@@ -4,37 +4,42 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background_cream">
+    android:background="?attr/colorSurface">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBar"
         android:layout_width="match_parent"
-        android:layout_height="400dp"
-        android:background="@color/white"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+        android:layout_height="380dp"
+        android:background="?attr/colorSurfaceContainerLow"
+        android:fitsSystemWindows="true">
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
             android:id="@+id/collapsingToolbar"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:contentScrim="?attr/colorPrimary"
+            android:fitsSystemWindows="true"
+            app:contentScrim="?attr/colorSurface"
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
-            app:titleEnabled="false">
+            app:titleEnabled="false"
+            app:statusBarScrim="?attr/colorSurface">
 
             <ImageView
                 android:id="@+id/ivProductDetail"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:contentDescription="Product image"
+                android:fitsSystemWindows="true"
                 android:scaleType="centerInside"
                 app:layout_collapseMode="parallax"
                 tools:srcCompat="@tools:sample/avatars" />
 
-            <androidx.appcompat.widget.Toolbar
+            <com.google.android.material.appbar.MaterialToolbar
                 android:id="@+id/detailToolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 app:layout_collapseMode="pin"
-                app:navigationIcon="@android:drawable/ic_menu_revert" />
+                app:navigationIcon="@drawable/ic_back"
+                app:navigationIconTint="?attr/colorOnSurface" />
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>
     </com.google.android.material.appbar.AppBarLayout>
@@ -53,8 +58,8 @@
                 android:id="@+id/tvDetailBrand"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Overline"
-                android:textColor="@color/accent_gold"
+                android:textAppearance="@style/TextAppearance.Material3.LabelMedium"
+                android:textColor="?attr/colorTertiary"
                 android:letterSpacing="0.2"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -65,8 +70,8 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"
-                android:textColor="@color/primary_lux"
+                android:textAppearance="@style/TextAppearance.Material3.HeadlineMedium"
+                android:textColor="?attr/colorOnSurface"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -77,9 +82,10 @@
                 android:id="@+id/tvDetailPrice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
-                android:textColor="@color/primary_light_lux"
+                android:layout_marginTop="12dp"
+                android:textAppearance="@style/TextAppearance.Material3.HeadlineSmall"
+                android:textColor="?attr/colorPrimary"
+                android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tvDetailName"
                 tools:text="$299.00" />
@@ -89,6 +95,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
+                app:dividerColor="?attr/colorOutlineVariant"
                 app:layout_constraintTop_toBottomOf="@id/tvDetailPrice" />
 
             <TextView
@@ -97,9 +104,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
                 android:text="@string/description_label"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
-                android:textColor="@color/primary_lux"
-                android:textStyle="bold"
+                android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
+                android:textColor="?attr/colorOnSurface"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/dividerDetail" />
 
@@ -108,13 +114,13 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
-                android:textColor="@color/text_main"
+                android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
+                android:textColor="?attr/colorOnSurfaceVariant"
                 android:lineSpacingExtra="4sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tvDescriptionLabel"
-                tools:text="A sophisticated blend of rare oud, smoky leather, and warm spices. This luxurious fragrance embodies the essence of royalty and timeless elegance." />
+                tools:text="A sophisticated blend of rare oud, smoky leather, and warm spices." />
 
             <View
                 android:layout_width="match_parent"
@@ -124,49 +130,54 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
 
+    <!-- Bottom action bar -->
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
+        app:cardBackgroundColor="?attr/colorSurfaceContainerHigh"
         app:cardCornerRadius="0dp"
-        app:cardElevation="16dp">
+        app:cardElevation="8dp"
+        app:strokeWidth="0dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:padding="16dp">
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="12dp">
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnDetailWishlist"
-                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                android:layout_width="64dp"
-                android:layout_height="64dp"
-                app:icon="@android:drawable/btn_star_big_off"
+                style="@style/Widget.App.Button.Outlined"
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                app:icon="@drawable/ic_favorite_border"
                 app:iconGravity="textStart"
                 app:iconPadding="0dp"
-                app:iconTint="@color/accent_gold"
-                app:strokeColor="@color/accent_gold" />
+                app:iconTint="?attr/colorError"
+                app:strokeColor="?attr/colorOutline" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnDetailAddToCart"
+                style="@style/Widget.App.Button"
                 android:layout_width="0dp"
-                android:layout_height="64dp"
-                android:layout_marginStart="16dp"
+                android:layout_height="56dp"
+                android:layout_marginStart="12dp"
                 android:layout_weight="1"
                 android:text="@string/add_to_cart"
                 android:textAllCaps="false"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Button"
-                app:cornerRadius="12dp" />
+                android:textAppearance="@style/TextAppearance.Material3.LabelLarge" />
 
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
 
-    <ProgressBar
+    <com.google.android.material.progressindicator.CircularProgressIndicator
         android:id="@+id/detailProgressBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:indeterminate="true"
         android:visibility="gone" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

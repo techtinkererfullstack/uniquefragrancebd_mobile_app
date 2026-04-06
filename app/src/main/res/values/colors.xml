@@ -1,21 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Luxurious Green Palette -->
-    <color name="primary_lux">#081C15</color>
-    <color name="primary_light_lux">#1B4332</color>
-    <color name="primary_dark_lux">#000000</color>
+    <!-- ============================================== -->
+    <!-- Material 3 Color Tokens — Light Theme          -->
+    <!-- Luxurious Emerald Green + Gold Palette          -->
+    <!-- ============================================== -->
 
-    <color name="accent_gold">#D4AF37</color>
-    <color name="accent_gold_light">#F9E79F</color>
+    <!-- Primary — Deep Emerald -->
+    <color name="md_theme_light_primary">#1B5E20</color>
+    <color name="md_theme_light_onPrimary">#FFFFFF</color>
+    <color name="md_theme_light_primaryContainer">#A5D6A7</color>
+    <color name="md_theme_light_onPrimaryContainer">#002204</color>
 
-    <color name="background_cream">#FDFDFD</color>
-    <color name="surface_white">#FFFFFF</color>
+    <!-- Secondary — Muted Sage -->
+    <color name="md_theme_light_secondary">#52634F</color>
+    <color name="md_theme_light_onSecondary">#FFFFFF</color>
+    <color name="md_theme_light_secondaryContainer">#D5E8CF</color>
+    <color name="md_theme_light_onSecondaryContainer">#101F0F</color>
 
-    <color name="text_main">#1B1B1B</color>
-    <color name="text_secondary">#757575</color>
+    <!-- Tertiary — Rich Gold -->
+    <color name="md_theme_light_tertiary">#8B6914</color>
+    <color name="md_theme_light_onTertiary">#FFFFFF</color>
+    <color name="md_theme_light_tertiaryContainer">#FFDEA2</color>
+    <color name="md_theme_light_onTertiaryContainer">#2C2000</color>
 
-    <color name="error_red">#B00020</color>
+    <!-- Error -->
+    <color name="md_theme_light_error">#BA1A1A</color>
+    <color name="md_theme_light_onError">#FFFFFF</color>
+    <color name="md_theme_light_errorContainer">#FFDAD6</color>
+    <color name="md_theme_light_onErrorContainer">#410002</color>
 
+    <!-- Background & Surface -->
+    <color name="md_theme_light_background">#FCFDF7</color>
+    <color name="md_theme_light_onBackground">#1A1C19</color>
+    <color name="md_theme_light_surface">#FCFDF7</color>
+    <color name="md_theme_light_onSurface">#1A1C19</color>
+    <color name="md_theme_light_surfaceVariant">#DEE5D9</color>
+    <color name="md_theme_light_onSurfaceVariant">#424940</color>
+    <color name="md_theme_light_surfaceContainerLowest">#FFFFFF</color>
+    <color name="md_theme_light_surfaceContainerLow">#F6F7F1</color>
+    <color name="md_theme_light_surfaceContainer">#F0F1EB</color>
+    <color name="md_theme_light_surfaceContainerHigh">#EBECE6</color>
+    <color name="md_theme_light_surfaceContainerHighest">#E5E6E0</color>
+
+    <!-- Outline -->
+    <color name="md_theme_light_outline">#72796F</color>
+    <color name="md_theme_light_outlineVariant">#C2C9BD</color>
+
+    <!-- Inverse -->
+    <color name="md_theme_light_inverseSurface">#2F312D</color>
+    <color name="md_theme_light_inverseOnSurface">#F0F1EB</color>
+    <color name="md_theme_light_inversePrimary">#89D98D</color>
+
+    <!-- Scrim -->
+    <color name="md_theme_light_scrim">#000000</color>
+
+    <!-- ============================================== -->
+    <!-- Legacy references (kept for compatibility)     -->
+    <!-- ============================================== -->
+    <color name="primary_lux">@color/md_theme_light_primary</color>
+    <color name="primary_light_lux">#2E7D32</color>
+    <color name="primary_dark_lux">#0A3A0A</color>
+    <color name="accent_gold">@color/md_theme_light_tertiary</color>
+    <color name="accent_gold_light">@color/md_theme_light_tertiaryContainer</color>
+    <color name="background_cream">@color/md_theme_light_background</color>
+    <color name="surface_white">@color/md_theme_light_surface</color>
+    <color name="text_main">@color/md_theme_light_onSurface</color>
+    <color name="text_secondary">@color/md_theme_light_onSurfaceVariant</color>
+    <color name="error_red">@color/md_theme_light_error</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 </resources>
