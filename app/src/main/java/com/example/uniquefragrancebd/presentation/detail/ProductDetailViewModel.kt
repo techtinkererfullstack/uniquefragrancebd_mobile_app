@@ -24,12 +24,12 @@ class ProductDetailViewModel @Inject constructor(
     val state: StateFlow<ProductDetailState> = _state.asStateFlow()
 
     init {
-        savedStateHandle.get<Int>("productId")?.let { productId ->
+        savedStateHandle.get<String>("productId")?.let { productId ->
             getProduct(productId)
         }
     }
 
-    private fun getProduct(id: Int) {
+    private fun getProduct(id: String) {
         viewModelScope.launch {
             _state.update { it.copy(isLoading = true) }
             val product = getProductByIdUseCase(id)

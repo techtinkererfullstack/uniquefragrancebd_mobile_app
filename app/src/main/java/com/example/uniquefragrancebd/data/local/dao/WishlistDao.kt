@@ -20,5 +20,5 @@ interface WishlistDao {
     suspend fun removeFromWishlist(wishlistEntity: WishlistEntity)
 
     @Query("SELECT EXISTS(SELECT 1 FROM wishlist WHERE id = :id)")
-    fun isInWishlist(id: Int): Flow<Boolean>
+    fun isInWishlist(id: String): Flow<Boolean>
 }

@@ -36,10 +36,21 @@ class SignupFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.btnSignup.setOnClickListener {
-            val name = binding.etSignupName.text.toString()
+            val firstName = binding.etFirstName.text.toString()
+            val lastName = binding.etLastName.text.toString()
             val email = binding.etSignupEmail.text.toString()
+            val phone = binding.etPhone.text.toString()
+            val address = binding.etAddress.text.toString()
             val password = binding.etSignupPassword.text.toString()
-            viewModel.signup(name, email, password)
+            
+            viewModel.signup(
+                firstName = firstName,
+                lastName = lastName,
+                email = email,
+                password = password,
+                phone = phone,
+                address = address
+            )
         }
 
         binding.tvGoToLogin.setOnClickListener {

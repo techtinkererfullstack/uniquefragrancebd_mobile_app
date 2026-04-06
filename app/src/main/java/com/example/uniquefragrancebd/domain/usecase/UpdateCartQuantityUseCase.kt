@@ -6,7 +6,7 @@ import javax.inject.Inject
 class UpdateCartQuantityUseCase @Inject constructor(
     private val repository: CartRepository
 ) {
-    suspend operator fun invoke(productId: Int, quantity: Int) {
+    suspend operator fun invoke(productId: String, quantity: Int) {
         if (quantity > 0) {
             repository.updateQuantity(productId, quantity)
         }

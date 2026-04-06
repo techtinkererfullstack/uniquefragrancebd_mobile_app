@@ -50,7 +50,7 @@ class ProfileFragment : Fragment() {
                 // We'll need to update AuthViewModel to provide the current user
                 val user = authViewModel.getCurrentUser()
                 if (user != null) {
-                    binding.tvProfileName.text = user.name
+                    binding.tvProfileName.text = user.fullName
                     binding.tvProfileEmail.text = user.email
                 } else {
                     findNavController().navigate(R.id.loginFragment)

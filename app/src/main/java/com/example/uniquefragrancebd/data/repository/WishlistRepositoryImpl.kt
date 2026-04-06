@@ -49,7 +49,7 @@ class WishlistRepositoryImpl @Inject constructor(
         )
     }
 
-    override fun isInWishlist(productId: Int): Flow<Boolean> {
+    override fun isInWishlist(productId: String): Flow<Boolean> {
         return wishlistDao.isInWishlist(productId)
     }
 }

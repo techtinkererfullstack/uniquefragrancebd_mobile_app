@@ -37,7 +37,7 @@ class ProductRepositoryImpl @Inject constructor(
         return productDao.getAllCategories()
     }
 
-    override suspend fun getProductById(id: Int): Product? {
+    override suspend fun getProductById(id: String): Product? {
         return productDao.getProductById(id)?.toDomain()
     }
 

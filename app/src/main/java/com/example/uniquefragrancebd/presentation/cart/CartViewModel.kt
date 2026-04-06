@@ -45,7 +45,7 @@ class CartViewModel @Inject constructor(
         }
     }
 
-    fun onUpdateQuantity(productId: Int, quantity: Int) {
+    fun onUpdateQuantity(productId: String, quantity: Int) {
         viewModelScope.launch {
             updateCartQuantityUseCase(productId, quantity)
         }

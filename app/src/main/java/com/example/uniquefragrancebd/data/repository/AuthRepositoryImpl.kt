@@ -20,23 +20,85 @@ class AuthRepositoryImpl @Inject constructor(
         emit(Resource.Loading())
         try {
             val response = apiService.login(LoginRequestDto(email, password))
-            sessionManager.saveAuthToken(response.token)
-            sessionManager.saveUser(response.userId, response.email, response.name)
-            val user = User(response.userId, response.email, response.name, response.token)
-            emit(Resource.Success(user))
+            val token = response.token ?: ""
+            val userDto = response.user
+            
+            if (userDto != null) {
+                sessionManager.saveAuthToken(token)
+                sessionManager.saveUser(
+                    userId = userDto.id,
+                    email = userDto.email,
+                    firstName = userDto.firstName,
+                    lastName = userDto.lastName,
+                    phone = userDto.phone,
+                    address = userDto.address
+                )
+                
+                val user = User(
+                    id = userDto.id,
+                    email = userDto.email,
+                    firstName = userDto.firstName,
+                    lastName = userDto.lastName,
+                    phone = userDto.phone,
+                    address = userDto.address,
+                    token = token
+                )
+                emit(Resource.Success(user))
+            } else {
+                emit(Resource.Error("User data not found"))
+            }
         } catch (e: Exception) {
             emit(Resource.Error(e.message ?: "Login failed"))
         }
     }
 
-    override fun signup(name: String, email: String, password: String): Flow<Resource<User>> = flow {
+    override fun signup(
+        firstName: String,
+        lastName: String,
+        email: String,
+        password: String,
+        phone: String?,
+        address: String?
+    ): Flow<Resource<User>> = flow {
         emit(Resource.Loading())
         try {
-            val response = apiService.signup(SignupRequestDto(name, email, password))
-            sessionManager.saveAuthToken(response.token)
-            sessionManager.saveUser(response.userId, response.email, response.name)
-            val user = User(response.userId, response.email, response.name, response.token)
-            emit(Resource.Success(user))
+            val response = apiService.signup(
+                SignupRequestDto(
+                    firstName = firstName,
+                    lastName = lastName,
+                    email = email,
+                    password = password,
+                    phone = phone,
+                    address = address
+                )
+            )
+            val token = response.token ?: ""
+            val userDto = response.user
+            
+            if (userDto != null) {
+                sessionManager.saveAuthToken(token)
+                sessionManager.saveUser(
+                    userId = userDto.id,
+                    email = userDto.email,
+                    firstName = userDto.firstName,
+                    lastName = userDto.lastName,
+                    phone = userDto.phone,
+                    address = userDto.address
+                )
+                
+                val user = User(
+                    id = userDto.id,
+                    email = userDto.email,
+                    firstName = userDto.firstName,
+                    lastName = userDto.lastName,
+                    phone = userDto.phone,
+                    address = userDto.address,
+                    token = token
+                )
+                emit(Resource.Success(user))
+            } else {
+                emit(Resource.Error("User data not found"))
+            }
         } catch (e: Exception) {
             emit(Resource.Error(e.message ?: "Signup failed"))
         }
@@ -50,7 +112,11 @@ class AuthRepositoryImpl @Inject constructor(
         val token = sessionManager.getAuthToken() ?: return null
         val userId = sessionManager.getUserId() ?: ""
         val email = sessionManager.getUserEmail() ?: ""
-        val name = sessionManager.getUserName() ?: ""
-        return User(userId, email, name, token)
+        val firstName = sessionManager.getFirstName() ?: ""
+        val lastName = sessionManager.getLastName() ?: ""
+        val phone = sessionManager.getPhone()
+        val address = sessionManager.getAddress()
+        
+        return User(userId, email, firstName, lastName, phone, address, token)
     }
 }
