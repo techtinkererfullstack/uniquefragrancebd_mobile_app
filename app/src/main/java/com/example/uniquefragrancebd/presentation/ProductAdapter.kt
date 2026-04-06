@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.example.uniquefragrancebd.R
 import com.example.uniquefragrancebd.databinding.ItemProductBinding
 import com.example.uniquefragrancebd.domain.model.Product
@@ -46,11 +47,14 @@ class ProductAdapter(
                 
                 Glide.with(ivProduct.context)
                     .load(product.imageUrl)
+                    .transition(DrawableTransitionOptions.withCrossFade())
+                    .placeholder(R.drawable.ic_launcher_background)
+                    .error(R.drawable.ic_shopping_bag)
                     .into(ivProduct)
 
                 btnWishlist.setImageResource(
-                    if (uiModel.isWishlisted) android.R.drawable.btn_star_big_on 
-                    else android.R.drawable.btn_star_big_off
+                    if (uiModel.isWishlisted) R.drawable.ic_favorite 
+                    else R.drawable.ic_favorite_border
                 )
 
                 root.setOnClickListener {
